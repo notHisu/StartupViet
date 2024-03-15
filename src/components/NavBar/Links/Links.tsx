@@ -4,9 +4,10 @@ import NavLink from "./NavLink/NavLink";
 
 export default function Links() {
   const links = [
-    { name: "About", path: "/about" },
     { name: "News", path: "/news" },
+    { name: "Spaces", path: "/spaces" },
     { name: "Contact", path: "/contact" },
+    { name: "About", path: "/about" },
   ];
 
   return (

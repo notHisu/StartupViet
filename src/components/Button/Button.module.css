@@ -1,0 +1,22 @@
+.container {
+  border: 0;
+  width: 100%;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1em;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  background: var(--button);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px /* {"name":"blk"} */;
+  transition: all 0.3s ease;
+}
+
+.container:hover {
+  background: var(--background);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px /* {"name":"blk"} */;
+}

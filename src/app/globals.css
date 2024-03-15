@@ -1,5 +1,29 @@
 :root {
   --background: #5468e7;
   --text: #ffffff;
+  --textBlack: #000000;
   --button: #8491e7;
+  --fontSize: 1rem;
+  --padding: 20rem 5rem 20rem 5rem;
+}
+
+.container {
+  max-width: 1600px;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
