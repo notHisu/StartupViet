@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link {
+  font-weight: 400;
+  font-size: var(--fontSize);
+  text-decoration: none;
+  color: var(--textBlack);
+}
