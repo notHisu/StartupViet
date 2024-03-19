@@ -5,8 +5,9 @@
 }
 
 .link {
-  font-weight: 400;
+  font-weight: 600;
   font-size: var(--fontSize);
   text-decoration: none;
   color: var(--textBlack);
+  opacity: 0.6;
 }
