@@ -1,0 +1,142 @@
+.newItemRow {
+  border-radius: 8px;
+  border: 2px solid #d4d2d2;
+  display: flex;
+  overflow: hidden;
+  background-color: #fff;
+  transition: scale 0.3s ease;
+}
+.newItemRow:hover {
+  cursor: pointer;
+  box-shadow: 0 12px 33.4px rgba(0, 0, 0, 25%);
+  scale: 1.02;
+}
+.newItemRow img {
+  height: auto;
+}
+.type {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #5468e7;
+}
+.title {
+  font-size: 1.2rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.note {
+  font-size: 1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.container {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.context {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.box_info {
+  display: flex;
+  gap: 40px;
+}
+.info {
+  font-size: 0.9rem;
+  display: flex;
+  gap: 8px;
+}
+@media (max-width: 1023px) {
+}
+@media (min-width: 1024px) and (max-width: 1239px) {
+  .newItemRow img {
+    height: 180px;
+  }
+  .title {
+    /* font-size: 20px; */
+    -webkit-line-clamp: 1;
+  }
+  /* .note {
+    font-size: 18px;
+  }
+  .info {
+    font-size: 14px;
+  } */
+}
+@media (min-width: 740px) and (max-width: 1023px) {
+  .newItemRow img {
+    height: 150px;
+  }
+  .title {
+    /* font-size: 16px; */
+    -webkit-line-clamp: 1;
+  }
+  /* .note {
+    font-size: 14px;
+  }
+  .info {
+    font-size: 12px;
+  } */
+  .context {
+    gap: 2px;
+  }
+  .container {
+    /* gap: 8px; */
+  }
+}
+@media (max-width: 739px) {
+  .container {
+    padding: 10px 20px 20px 20px;
+  }
+  .newItemRow {
+    border-radius: 8px;
+    border: 2px solid #d4d2d2;
+    overflow: hidden;
+    flex-direction: column;
+  }
+  .newItemRow img {
+    width: 100%;
+    height: auto;
+  }
+  .context {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .box_info {
+    display: flex;
+    justify-content: space-between;
+  }
+  .title {
+    -webkit-line-clamp: 2;
+  }
+  .context {
+    gap: 6px;
+  }
+  .newItemRow {
+    margin-bottom: 24px;
+  }
+  .type {
+    font-size: 1.3rem;
+  }
+  .title {
+    font-size: 1.4rem;
+  }
+  .note {
+    font-size: 1rem;
+  }
+  .info {
+    /* gap: 12px; */
+    font-size: 1rem;
+  }
+}
