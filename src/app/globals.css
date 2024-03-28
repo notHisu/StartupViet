@@ -7,15 +7,10 @@
   --padding: 20rem 5rem 20rem 5rem;
 }
 
-.container {
-  max-width: 1600px;
-  margin: auto;
-  padding-left: 50px;
-  padding-right: 50px;
-  min-height: 100vh;
+.background {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
   background: rgb(255, 255, 255);
   background: linear-gradient(
     30deg,
@@ -30,6 +25,17 @@
     rgba(193, 227, 243, 1) 87%,
     rgba(255, 255, 255, 1) 96%
   );
+}
+
+.container {
+  max-width: 1600px;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 * {
