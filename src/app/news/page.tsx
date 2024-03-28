@@ -3,7 +3,21 @@ import ListMostRead from "./List/ListMostRead/ListMostRead";
 import styles from "./news.module.css";
 import Button from "@/components/Button/Button";
 
-export default function NewsPage() {
+async function getNewsData() {
+  const res = await fetch("http://localhost:3000/api/news/all", {
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) {
+    throw new Error("Something went wrong!");
+  }
+
+  return res.json();
+}
+
+export default async function NewsPage() {
+  const data = await getNewsData();
+  console.log(data);
   return (
     <div>
       {/* <div className={styles.head}>
@@ -21,8 +35,8 @@ export default function NewsPage() {
         <div className="row">
           <div className="col l-2 m-2 c-12"></div>
           <div>
-            <ListMostRead />
-            <List />
+            <ListMostRead newsData={data} />
+            <List newsData={data} />
             {/* <div className={styles.pagination}>
               <div className={`${styles.btn_pagination} ${styles.btn_default}`}>
                 <i className="fa-solid fa-arrow-left"></i>
