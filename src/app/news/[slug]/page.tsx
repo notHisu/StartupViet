@@ -34,7 +34,7 @@ export default async function DetailsPage({
   const data = await getNewsData();
   return (
     <div>
-      <div className={`${styles.container}`}>
+      <div>
         <h2 className={styles.type}>{news.note}</h2>
         <h1 className={styles.title}>{news.title}</h1>
         {/* <div className={styles.note}>{news.note}</div> */}
@@ -64,11 +64,14 @@ export default async function DetailsPage({
           </div> */}
         </div>
         {/* <img className={styles.new_img} src={news.image} /> */}
-        <img className={styles.new_img} src="https://fakeimg.pl/1000x700" />
-        <p
-          className={styles.content}
-          dangerouslySetInnerHTML={{ __html: news.content }}
-        ></p>
+
+        <div className={`${styles.container}`}>
+          <img className={styles.new_img} src="https://fakeimg.pl/1000x700" />
+          <p
+            className={styles.content}
+            dangerouslySetInnerHTML={{ __html: news.content }}
+          ></p>
+        </div>
       </div>
       <div className={styles.list_news}>
         <List newsData={data} title="More to Read" />
