@@ -17,7 +17,7 @@ async function getNewsData() {
 
 export default async function NewsPage() {
   const data = await getNewsData();
-  console.log(data);
+
   return (
     <div>
       {/* <div className={styles.head}>
