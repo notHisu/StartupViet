@@ -7,6 +7,9 @@
   overflow: hidden;
   transition: scale 0.3s ease;
 }
+.newItemRow * {
+  color: var(--textBlack);
+}
 .newItemRow:hover {
   cursor: pointer;
   box-shadow: 0 12px 33.4px rgba(0, 0, 0, 25%);
@@ -42,7 +45,7 @@
   flex-direction: column;
   padding: 10px 20px 20px 20px;
   justify-content: space-between;
-  /* height: 220px; */
+  height: 160px;
   gap: 1rem;
 }
 .context {
@@ -54,12 +57,13 @@
   display: flex;
   justify-content: space-between;
 }
+
 .info {
   display: flex;
   gap: 8px;
   font-size: 0.9rem;
 }
-@media (min-width: 740px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1023px) {
   .type {
     font-size: 1.4rem;
   }
@@ -77,7 +81,7 @@
     height: 240px;
   }
 }
-@media (max-width: 739px) {
+@media (max-width: 768px) {
   /* .contain {
     height: 230px;
   } */
