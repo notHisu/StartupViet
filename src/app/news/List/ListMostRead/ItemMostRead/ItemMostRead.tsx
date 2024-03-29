@@ -26,7 +26,9 @@ export default function ItemMostRead({
           backgroundPosition: "center",
         }}
       >
-        <div className={styles.type}>{/* <p>{item.type}</p> */}</div>
+        <div className={styles.type}>
+          <p>{item.note}</p>
+        </div>
         <div>
           <h2 className={styles.title}>{item.title}</h2>
           <div className={styles.box_info}>

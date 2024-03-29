@@ -63,7 +63,7 @@
   gap: 8px;
   font-size: 0.9rem;
 }
-@media (min-width: 740px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1023px) {
   .type {
     font-size: 1.4rem;
   }
@@ -81,7 +81,7 @@
     height: 240px;
   }
 }
-@media (max-width: 739px) {
+@media (max-width: 768px) {
   /* .contain {
     height: 230px;
   } */

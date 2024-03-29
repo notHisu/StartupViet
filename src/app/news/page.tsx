@@ -36,7 +36,7 @@ export default async function NewsPage() {
           <div className="col l-2 m-2 c-12"></div>
           <div>
             <ListMostRead newsData={data} />
-            <List newsData={data} />
+            <List newsData={data} title="Be Good to the World" />
             {/* <div className={styles.pagination}>
               <div className={`${styles.btn_pagination} ${styles.btn_default}`}>
                 <i className="fa-solid fa-arrow-left"></i>

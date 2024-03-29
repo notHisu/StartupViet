@@ -22,10 +22,10 @@ export default function List({
         {/* <Image src={item.img} alt="logo" width={372} height={288} /> */}
         <img src="https://fakeimg.pl/1000x700" />
         <div className={`${styles.container}`}>
-          {/* <p className={styles.type}>{item.type}</p> */}
+          {/* <p className={styles.type}>{item.note}</p> */}
           <div className={styles.context}>
             <h2 className={styles.title}>{item.title}</h2>
-            <p className={styles.note}>{item.note}</p>
+            <p className={styles.note}>{item.content}</p>
           </div>
           <div className={styles.box_info}>
             <div className={styles.info}>
