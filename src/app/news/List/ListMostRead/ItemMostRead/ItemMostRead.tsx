@@ -21,7 +21,7 @@ export default function ItemMostRead({
         style={{
           // background: `url(${item.img})`,
           background: "url(https://fakeimg.pl/1000x700)",
-          backgroundSize: "contain",
+          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
