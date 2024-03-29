@@ -8,15 +8,15 @@ export default function NewsPage() {
     <div>
       {/* <div className={styles.head}>
             </div> */}
-      <div className={`grid wide c-12 ${styles.search_bar}`}>
+      {/* <div className={`grid wide c-12 ${styles.search_bar}`}>
         <div className={styles.search_bar_item}>
           <label>Location</label>
           <input placeholder="Enter your location" />
         </div>
-        {/* <ComboBox className={styles.search_bar_item} options={options} title='Recruitment type' />
-                <ComboBox className={styles.search_bar_item} options={options} title='Price range' /> */}
+        <ComboBox className={styles.search_bar_item} options={options} title='Recruitment type' />
+                <ComboBox className={styles.search_bar_item} options={options} title='Price range' />
         <Button className={styles.search_btn}>Search</Button>
-      </div>
+      </div> */}
       <div className={`grid wide ${styles.container}`}>
         <div className="row">
           <div className="col l-2 m-2 c-12"></div>
