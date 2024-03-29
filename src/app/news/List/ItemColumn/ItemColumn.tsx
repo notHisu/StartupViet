@@ -19,7 +19,8 @@ export default function List({
   return (
     <Link href={`/news/${item._id}`}>
       <div className={`${styles.newItemRow}`}>
-        <Image src={item.img} alt="logo" width={372} height={288} />
+        {/* <Image src={item.img} alt="logo" width={372} height={288} /> */}
+        <img src="https://fakeimg.pl/1000x700" />
         <div className={`${styles.container}`}>
           {/* <p className={styles.type}>{item.type}</p> */}
           <div className={styles.context}>
@@ -37,9 +38,9 @@ export default function List({
                   .join("-")}
               </p>
             </div>
-            <div className={styles.info}>
+            <div>
               <i className="fa-solid fa-user"></i>
-              <p>{item.username}</p>
+              <p className={styles.info_txt}>{item.username}</p>
             </div>
           </div>
         </div>

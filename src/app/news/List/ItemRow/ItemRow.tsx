@@ -18,13 +18,14 @@ export default function List({
   return (
     <Link href={`/news/${item._id}`}>
       <div className={`${styles.newItemRow}`}>
-        <Image
+        {/* <Image
           className="l-5"
           src={item.img}
           alt="logo"
           width={372}
           height={288}
-        />
+        /> */}
+        <img className="l-6" src="https://fakeimg.pl/1000x700" />
         <div className={`${styles.container}`}>
           {/* <p className={styles.type}>{item.type}</p> */}
           <div className={styles.context}>

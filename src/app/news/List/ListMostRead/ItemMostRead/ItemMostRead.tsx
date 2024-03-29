@@ -19,8 +19,9 @@ export default function ItemMostRead({
       <div
         className={`${styles.bg_img}`}
         style={{
-          background: `url(${item.img})`,
-          backgroundSize: "cover",
+          // background: `url(${item.img})`,
+          background: "url(https://fakeimg.pl/1000x700)",
+          backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
