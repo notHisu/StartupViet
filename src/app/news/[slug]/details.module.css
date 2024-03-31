@@ -5,6 +5,7 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  align-items: center;
 }
 
 .title {
@@ -15,13 +16,18 @@
   margin-bottom: 1rem;
 }
 
+.editButton {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100px;
+}
+
 .content {
   font-size: 1.1rem;
   line-height: 1.625;
+  text-align: left;
 }
-.container {
-  padding: 1.875rem 0 6.25rem 0;
-}
+
 /* .details *{
   color: #232340;
 } */
@@ -81,8 +87,6 @@
 }
 .new_img {
   height: 31.25rem;
-  /* margin: 6.25rem 0;
-  padding-left: 20%; */
   margin: 6.25rem 0;
 }
 .content {
@@ -105,7 +109,6 @@
   .new_img {
     /* height: 400px; */
     margin: 3.75rem 0;
-    padding-left: 15%;
   }
   .type {
     color: #5468e7;

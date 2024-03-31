@@ -1,19 +1,8 @@
+import { getNewsData } from "@/api";
 import List from "./List/List";
 import ListMostRead from "./List/ListMostRead/ListMostRead";
 import styles from "./news.module.css";
 import Button from "@/components/Button/Button";
-
-async function getNewsData() {
-  const res = await fetch("http://localhost:3000/api/news/all", {
-    next: { revalidate: 3600 },
-  });
-
-  if (!res.ok) {
-    throw new Error("Something went wrong!");
-  }
-
-  return res.json();
-}
 
 export default async function NewsPage() {
   const data = await getNewsData();

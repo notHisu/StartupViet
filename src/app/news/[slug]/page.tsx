@@ -1,40 +1,22 @@
+import Button from "@/components/Button/Button";
 import List from "../List/List";
 import styles from "./details.module.css";
+import Image from "next/image";
+import Link from "next/link";
+import { getNewsData, getNewsDataBySlug } from "@/api";
 
-async function getNewsData() {
-  const res = await fetch("http://localhost:3000/api/news/all", {
-    next: { revalidate: 3600 },
-  });
-
-  if (!res.ok) {
-    throw new Error("Something went wrong!");
-  }
-
-  return res.json();
+interface DetailsPageProps {
+  params: {
+    slug: string;
+  };
 }
 
-async function getData(slug: string) {
-  const res = await fetch(`http://localhost:3000/api/news/${slug}`, {
-    cache: "no-cache",
-  });
-
-  if (!res.ok) {
-    throw new Error("Something went wrong!");
-  }
-
-  return res.json();
-}
-
-export default async function DetailsPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const news = await getData(params.slug);
+export default async function DetailsPage({ params }: DetailsPageProps) {
+  const news = await getNewsDataBySlug(params.slug);
   const data = await getNewsData();
   return (
     <div>
-      <div>
+      <div className={styles.container}>
         <h2 className={styles.type}>{news.note}</h2>
         <h1 className={styles.title}>{news.title}</h1>
         {/* <div className={styles.note}>{news.note}</div> */}
@@ -64,14 +46,24 @@ export default async function DetailsPage({
           </div> */}
         </div>
         {/* <img className={styles.new_img} src={news.image} /> */}
+        <Link href={`/edit/${params.slug}`}>
+          <Button className={styles.editButton}>Edit</Button>
+        </Link>
 
-        <div className={`${styles.container}`}>
-          <img className={styles.new_img} src="https://fakeimg.pl/1000x700" />
-          <p
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: news.content }}
-          ></p>
-        </div>
+        <Image
+          className={styles.new_img}
+          src="https://fakeimg.pl/1000x700"
+          width={1000}
+          height={700}
+          alt="Description of image"
+        />
+
+        <p
+          className={styles.content}
+          dangerouslySetInnerHTML={{
+            __html: news.content.replace(/\n/g, "<br />"),
+          }}
+        ></p>
       </div>
       <div className={styles.list_news}>
         <List newsData={data} title="More to Read" />
