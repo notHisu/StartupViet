@@ -1,11 +1,15 @@
-import { getNewsData } from "@/api";
+import { getNewsData } from "@/app/api";
 import List from "./List/List";
 import ListMostRead from "./List/ListMostRead/ListMostRead";
 import styles from "./news.module.css";
 import Button from "@/components/Button/Button";
+import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { options } from "../api/auth/[...nextauth]/options";
 
 export default async function NewsPage() {
   const data = await getNewsData();
+  const session = await getServerSession(options);
 
   return (
     <div>
@@ -24,6 +28,12 @@ export default async function NewsPage() {
         <div className="row">
           <div className="col l-2 m-2 c-12"></div>
           <div>
+            {session && (
+              <Link href="/news/add">
+                <Button className={styles.addNewsButton}>Create News</Button>
+              </Link>
+            )}
+
             <ListMostRead newsData={data} />
             <List newsData={data} title="Be Good to the World" />
             {/* <div className={styles.pagination}>

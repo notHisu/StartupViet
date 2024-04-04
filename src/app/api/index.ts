@@ -73,3 +73,25 @@ export async function deleteNewsById(slug: string) {
     throw error;
   }
 }
+
+export async function addNews(data: any) {
+  try {
+    const res = await fetch("http://localhost:3000/api/news/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    });
+
+    if (!res.ok) {
+      throw new Error("Something went wrong!");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error(error);
+    // You can replace this with your own error handling code
+    throw error;
+  }
+}

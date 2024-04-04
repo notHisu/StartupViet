@@ -1,52 +1,20 @@
-"use client";
-import { getNewsData } from "@/api";
-import { useEffect, useState } from "react";
+import { getServerSession } from "next-auth";
+import { options } from "../api/auth/[...nextauth]/options";
 
-/* export default async function TestPage() {
-  const newsData = await getNewsData();
-  console.log(newsData);
-  return (
-    <div>
-      <h1>Test Page</h1>
-    </div>
-  );
-}
- */
-async function testGetNewsData() {
-  const res = await fetch("http://localhost:3000/api/news/all");
-  //const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  return await res.json();
-}
-
-export default function TestPage() {
-  const [newsData, setNewsData] = useState();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      console.log("Fetching data..."); // Log the fetching data
-      try {
-        const data = await testGetNewsData();
-        setNewsData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  if (!newsData) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
-
-  console.log("News data: ", newsData); // Log the news data
+export default async function TestPage() {
+  const session = await getServerSession(options);
 
   return (
-    <div>
-      <h1>Test Page</h1>
-    </div>
+    <>
+      {session ? (
+        <div>
+          <h1>Test Page</h1>
+        </div>
+      ) : (
+        <div>
+          <h1>You are not login</h1>
+        </div>
+      )}
+    </>
   );
 }

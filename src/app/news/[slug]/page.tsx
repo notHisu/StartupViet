@@ -3,7 +3,9 @@ import List from "../List/List";
 import styles from "./details.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { getNewsData, getNewsDataBySlug } from "@/api";
+import { getNewsData, getNewsDataBySlug } from "@/app/api";
+import { getServerSession } from "next-auth";
+import { options } from "@/app/api/auth/[...nextauth]/options";
 
 interface DetailsPageProps {
   params: {
@@ -14,6 +16,10 @@ interface DetailsPageProps {
 export default async function DetailsPage({ params }: DetailsPageProps) {
   const news = await getNewsDataBySlug(params.slug);
   const data = await getNewsData();
+
+  const session = await getServerSession(options);
+  const canEdited = session && session?.user?.name === news.username;
+
   return (
     <div>
       <div className={styles.container}>
@@ -46,9 +52,11 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
           </div> */}
         </div>
         {/* <img className={styles.new_img} src={news.image} /> */}
-        <Link href={`/edit/${params.slug}`}>
-          <Button className={styles.editButton}>Edit</Button>
-        </Link>
+        {canEdited && (
+          <Link href={`/news/${params.slug}/edit`}>
+            <Button className={styles.editButton}>Edit</Button>
+          </Link>
+        )}
 
         <Image
           className={styles.new_img}

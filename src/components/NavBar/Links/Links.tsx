@@ -8,6 +8,7 @@ export default function Links() {
     { name: "Spaces", path: "/spaces" },
     { name: "Contact", path: "/contact" },
     { name: "About", path: "/about" },
+    { name: "Test", path: "/test" },
   ];
 
   return (

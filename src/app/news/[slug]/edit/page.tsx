@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./edit.module.css";
-import { deleteNewsById, getNewsDataBySlug, updateNewsById } from "@/api";
+import { deleteNewsById, getNewsDataBySlug, updateNewsById } from "@/app/api";
 import Button from "@/components/Button/Button";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 interface NewsData {
   title: string;
@@ -22,6 +23,8 @@ export default function EditPage({ params }: EditPageProps) {
     title: "",
     content: "",
   });
+
+  const { data: session } = useSession();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,7 +62,7 @@ export default function EditPage({ params }: EditPageProps) {
     try {
       await deleteNewsById(params.slug);
       alert("News deleted successfully!");
-      router.push("/news");
+      await router.push("/news");
     } catch (error) {
       console.error(error);
       alert("Failed to delete news!");
@@ -70,6 +73,9 @@ export default function EditPage({ params }: EditPageProps) {
     router.back();
   };
 
+  if (!session) {
+    redirect(`/api/auth/signin?callbackUrl=/`);
+  }
   return (
     <div className={styles.container}>
       <Button className="" onClick={handleBack}>

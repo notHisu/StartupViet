@@ -1,7 +1,9 @@
 import Button from "@/components/Button/Button";
 import styles from "./page.module.css";
+import { getServerSession } from "next-auth";
+import { options } from "./api/auth/[...nextauth]/options";
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <div className={styles.container}>
       <h1>
