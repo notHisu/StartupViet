@@ -13,3 +13,14 @@
 .imgContainer {
   height: auto;
 }
+
+.user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user p {
+  margin-right: 1rem;
+  font-weight: bold;
+}

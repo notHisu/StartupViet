@@ -18,7 +18,7 @@ interface NewsData {
 export default function AddPage() {
   const { data: session } = useSession();
   if (!session) {
-    redirect("/api/auth/signin?callbackUrl=/add");
+    redirect("/api/auth/signin?callbackUrl=/news");
   }
   const [newsData, setNewsData] = useState<NewsData>({
     title: "",
@@ -42,6 +42,7 @@ export default function AddPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    newsData.username = session?.user?.name || "";
     const jsonData = JSON.stringify(newsData);
     console.log(jsonData);
 
@@ -84,6 +85,7 @@ export default function AddPage() {
             type="text"
             name="username"
             value={session?.user?.name || ""}
+            readOnly
           />
         </label>
         <label>

@@ -6,7 +6,9 @@ import ItemMostRead from "./ItemMostRead/ItemMostRead";
 export default function ListMostRead({ newsData }: { newsData: any }) {
   const ListNews = newsData;
 
-  const featuredNews = ListNews.filter((item: any) => item.featured === true);
+  const featuredNews = ListNews
+    ? ListNews.filter((item: any) => item.featured === true)
+    : [];
 
   const itemMostRead = featuredNews[0];
   /*   const ListNews = [
@@ -50,7 +52,7 @@ export default function ListMostRead({ newsData }: { newsData: any }) {
   return (
     <div className="row">
       <div className="col l-8 m-8 c-12">
-        <ItemMostRead item={itemMostRead} />
+        {itemMostRead && <ItemMostRead item={itemMostRead} />}
       </div>
       <div className={`col l-4 m-4 c-12 ${styles.listNewsRow}`}>
         {featuredNews.map((item: any) => (

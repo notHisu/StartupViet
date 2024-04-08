@@ -1,4 +1,5 @@
-import { getNewsData } from "@/app/api";
+"use client";
+import { getNewsData, getPaginatedNewsData } from "@/app/api";
 import List from "./List/List";
 import ListMostRead from "./List/ListMostRead/ListMostRead";
 import styles from "./news.module.css";
@@ -6,10 +7,39 @@ import Button from "@/components/Button/Button";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
-export default async function NewsPage() {
-  const data = await getNewsData();
-  const session = await getServerSession(options);
+interface NewsItem {
+  // Define the properties of a news item here
+  _id: string;
+  title: string;
+  note: string;
+  image: string;
+  content: string;
+  featured: boolean;
+  date: string;
+  user: string;
+}
+
+export default function NewsPage() {
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(4);
+  const { data: session } = useSession();
+
+  const [news, setNews] = useState<NewsItem[] | null>(null);
+
+  const [paginatedNews, setPaginatedNews] = useState(null);
+
+  useEffect(() => {
+    getNewsData()
+      .then((data) => setNews(data))
+      .catch((error) => console.error(error));
+
+    getPaginatedNewsData(page, limit)
+      .then((data) => setPaginatedNews(data))
+      .catch((error) => console.error(error));
+  }, [page, limit]);
 
   return (
     <div>
@@ -34,21 +64,24 @@ export default async function NewsPage() {
               </Link>
             )}
 
-            <ListMostRead newsData={data} />
-            <List newsData={data} title="Be Good to the World" />
-            {/* <div className={styles.pagination}>
-              <div className={`${styles.btn_pagination} ${styles.btn_default}`}>
-                <i className="fa-solid fa-arrow-left"></i>
-              </div>
-              <div className={`${styles.btn_pagination} ${styles.btn_active}`}>
-                1
-              </div>
-              ...
-              <div className={`${styles.btn_pagination}`}>5</div>
-              <div className={`${styles.btn_pagination} ${styles.btn_next}`}>
-                <i className="fa-solid fa-arrow-right"></i>
-              </div>
-            </div> */}
+            <ListMostRead newsData={news} />
+            <List newsData={paginatedNews} title="Be Good to the World" />
+            <div className={styles.pagination}>
+              <Button
+                onClick={() => setPage(page - 1)}
+                disabled={page === 1}
+                className={styles.btn}
+              >
+                Previous
+              </Button>
+              <Button
+                onClick={() => setPage(page + 1)}
+                disabled={paginatedNews ? paginatedNews.length < limit : true}
+                className={styles.btn}
+              >
+                Next
+              </Button>
+            </div>
           </div>
         </div>
       </div>

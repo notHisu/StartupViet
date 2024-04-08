@@ -9,6 +9,7 @@ import { useSession } from "next-auth/react";
 interface NewsData {
   title: string;
   content: string;
+  featured: boolean;
 }
 
 interface EditPageProps {
@@ -22,6 +23,7 @@ export default function EditPage({ params }: EditPageProps) {
   const [newsData, setNewsData] = useState<NewsData>({
     title: "",
     content: "",
+    featured: false,
   });
 
   const { data: session } = useSession();
@@ -92,6 +94,17 @@ export default function EditPage({ params }: EditPageProps) {
             name="title"
             value={newsData.title}
             onChange={handleChange}
+          />
+        </label>
+        <label>
+          Featured:
+          <input
+            type="checkbox"
+            name="featured"
+            checked={newsData.featured}
+            onChange={(e) =>
+              setNewsData({ ...newsData, featured: e.target.checked })
+            }
           />
         </label>
         <label>

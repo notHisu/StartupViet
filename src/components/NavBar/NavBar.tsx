@@ -30,9 +30,12 @@ export default function NavBar() {
               Login
             </Button>
           ) : (
-            <Button onClick={signOut} className="styles.button">
-              Logout
-            </Button>
+            <div className={styles.user}>
+              <p>{session.user?.name}</p>
+              <Button onClick={signOut} className="styles.button">
+                Logout
+              </Button>
+            </div>
           )}
         </div>
       </div>

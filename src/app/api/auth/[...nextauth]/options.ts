@@ -23,16 +23,21 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        const user = { id: "1", name: "test", password: "test" };
-
-        if (
-          credentials?.username === user.name &&
-          credentials.password === user.password
-        ) {
-          return user;
-        } else {
-          return null;
+        const users = [
+          { id: "1", name: "test", password: "test" },
+          { id: "2", name: "Hieu", password: "hieu" },
+          { id: "3", name: "Khoi", password: "khoi" },
+        ];
+        for (let user of users) {
+          if (
+            credentials?.username === user.name &&
+            credentials.password === user.password
+          ) {
+            return user;
+          }
         }
+
+        return null;
       },
     }),
   ],
