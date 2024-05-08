@@ -26,12 +26,20 @@ export default function ItemMostRead({
           backgroundPosition: "center",
         }}
       >
-        <div className={styles.type}>
-          <p>{item.note}</p>
-        </div>
         <div>
+          <div className={styles.type}>
+            <p>{item.note}</p>
+          </div>
           <h2 className={styles.title}>{item.title}</h2>
-          <div className={styles.box_info}>
+        </div>
+        <div className={styles.box_info}>
+          <div className={styles.info}>
+            <p>By:</p>
+            <p>{item.username}</p>
+          </div>
+          <p className={styles.note}>{item.content}</p>
+
+          {/* <div className={styles.box_info}>
             <div className={styles.info}>
               <i className="fa-solid fa-calendar-days"></i>
               <p>
@@ -45,7 +53,7 @@ export default function ItemMostRead({
               <i className="fa-solid fa-user"></i>
               <p>{item.username}</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </Link>

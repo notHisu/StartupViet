@@ -51,10 +51,10 @@ export default function ListMostRead({ newsData }: { newsData: any }) {
   ]; */
   return (
     <div className="row">
-      <div className="col l-8 m-8 c-12">
+      <div className="col l-9 m-8 c-12">
         {itemMostRead && <ItemMostRead item={itemMostRead} />}
       </div>
-      <div className={`col l-4 m-4 c-12 ${styles.listNewsRow}`}>
+      <div className={`col l-3 m-4 c-12 ${styles.listNewsRow}`}>
         {featuredNews.map((item: any) => (
           <ItemRow item={item} key={item._id} />
         ))}

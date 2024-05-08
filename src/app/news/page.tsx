@@ -1,7 +1,7 @@
 "use client";
 import { getNewsData, getPaginatedNewsData } from "@/app/api";
-import List from "./List/List";
-import ListMostRead from "./List/ListMostRead/ListMostRead";
+import List from "@/components/List/List";
+import ListMostRead from "@/components//List/ListMostRead/ListMostRead";
 import styles from "./news.module.css";
 import Button from "@/components/Button/Button";
 import Link from "next/link";
@@ -66,7 +66,7 @@ export default function NewsPage() {
 
             <ListMostRead newsData={news} />
             <List newsData={paginatedNews} title="Be Good to the World" />
-            <div className={styles.pagination}>
+            {/* <div className={styles.pagination}>
               <Button
                 onClick={() => setPage(page - 1)}
                 disabled={page === 1}
@@ -81,7 +81,7 @@ export default function NewsPage() {
               >
                 Next
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

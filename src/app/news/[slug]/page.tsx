@@ -1,5 +1,5 @@
 import Button from "@/components/Button/Button";
-import List from "../List/List";
+import List from "@/components/List/List";
 import styles from "./details.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,7 +23,14 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
   return (
     <div>
       <div className={styles.container}>
-        <h2 className={styles.type}>{news.note}</h2>
+        <Image
+          className={`l-12 ${styles.new_img}`}
+          src="https://fakeimg.pl/1000x700"
+          width={1000}
+          height={700}
+          alt="Description of image"
+        />
+
         <h1 className={styles.title}>{news.title}</h1>
         {/* <div className={styles.note}>{news.note}</div> */}
         <div className={`row ${styles.info}`}>
@@ -33,7 +40,7 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
               <p className={styles.name}>{news.username}</p>
             </div>
             <div className={styles.date}>
-              <i className="fa-solid fa-calendar-days"></i>
+              {/* <i className="fa-solid fa-calendar-days"></i> */}
               <p>
                 {new Date(news.date)
                   .toLocaleDateString("en-GB")
@@ -41,7 +48,9 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
                   .join("-")}
               </p>
             </div>
+            <h2 className={styles.type}>{news.note}</h2>
           </div>
+
           {/* <div className={`col c-12 m-6 l-6 ${styles.contact}`}>
             <p className={styles.info_title}>Contact:</p>
             <div className={styles.contact_img}>
@@ -57,14 +66,6 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
             <Button className={styles.editButton}>Edit</Button>
           </Link>
         )}
-
-        <Image
-          className={styles.new_img}
-          src="https://fakeimg.pl/1000x700"
-          width={1000}
-          height={700}
-          alt="Description of image"
-        />
 
         <p
           className={styles.content}

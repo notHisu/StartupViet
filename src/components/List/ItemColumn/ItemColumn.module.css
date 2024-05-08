@@ -1,6 +1,6 @@
 .newItemRow {
-  border-radius: 8px;
-  border: 2px solid #d4d2d2;
+  border-radius: 1rem;
+  /* border: 2px solid #d4d2d2; */
   background-color: #fff;
   /* display: flex; */
   /* gap: 20px; */
@@ -22,22 +22,27 @@
   color: #5468e7;
 }
 .title {
-  font-size: 1.3rem;
+  font-weight: 200;
+  line-height: 1.4;
+  font-size: 1.5rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   overflow: hidden;
 }
 .note {
   font-size: var(--fontSize);
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 6;
   overflow: hidden;
 }
 .newItemRow img {
   height: 100%;
   width: 100%;
+}
+.img {
+  border-radius: 1rem;
 }
 .container {
   display: flex;
@@ -45,7 +50,7 @@
   flex-direction: column;
   padding: 10px 20px 20px 20px;
   justify-content: space-between;
-  height: 160px;
+  height: 325px;
   gap: 1rem;
 }
 .context {
