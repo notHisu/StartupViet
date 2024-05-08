@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  /* justify-content: center; */
+  padding: 5.625rem 0;
   overflow: auto;
-  gap: 2rem;
-  height: 100vh;
+  gap: 1.8rem;
+  /* height: 100vh; */
 }
 
 .container h1 {
@@ -13,16 +14,22 @@
   font-weight: 400;
   margin: 0;
 }
-
+.container h2 {
+  font-size: 3rem;
+  font-weight: 200;
+  color: #2b2b2b;
+  margin: 0;
+}
 .container p {
-  font-size: 1.5rem;
-  font-weight: 300;
+  color: #2b2b2b;
+  font-size: 2.5rem;
+  /* font-weight: 300; */
   margin: 0;
 }
 
 .button {
   padding: 1rem 2rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 300;
   border: none;
   border-radius: 72px;
