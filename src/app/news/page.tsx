@@ -9,6 +9,9 @@ import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import Input from "@/components/Input/Input";
+import ItemColumn from "@/components/List/ItemColumn/ItemColumn";
+import ComboBox from "@/components/ComboBox/ComboBox";
 
 interface NewsItem {
   // Define the properties of a news item here
@@ -43,20 +46,22 @@ export default function NewsPage() {
 
   return (
     <div>
-      {/* <div className={styles.head}>
-            </div> */}
-      {/*       <div className={`grid wide c-12 ${styles.search_bar}`}>
+      <div className={`grid wide c-12 ${styles.search_bar}`}>
         <div className={styles.search_bar_item}>
-          <label>Location</label>
-          <input placeholder="Enter your location" />
+          <label></label>
+          <Input
+            type="text"
+            className={`${styles.inp}`}
+            placeholder="Search..."
+          />
+          <ComboBox />
         </div>
-        <ComboBox className={styles.search_bar_item} options={options} title='Recruitment type' />
-                <ComboBox className={styles.search_bar_item} options={options} title='Price range' />
         <Button className={styles.search_btn}>Search</Button>
-      </div> */}
+      </div>
+
       <div className={`grid wide ${styles.container}`}>
         <div className="row">
-          <div className="col l-2 m-2 c-12"></div>
+          {/* <div className="col l-2 m-2 c-12"></div> */}
           <div>
             {session && (
               <Link href="/news/add">
@@ -64,9 +69,20 @@ export default function NewsPage() {
               </Link>
             )}
 
-            <ListMostRead newsData={news} />
-            <List newsData={paginatedNews} title="Be Good to the World" />
-            {/* <div className={styles.pagination}>
+            {/* <ListMostRead newsData={news} /> */}
+            <div className={styles.listNews}>
+              {paginatedNews ? (
+                paginatedNews.map((item: any) => (
+                  <div className="col l-3" key={item._id}>
+                    <ItemColumn item={item} />
+                  </div>
+                ))
+              ) : (
+                <div>Loading...</div>
+              )}
+            </div>
+            {/* <List newsData={paginatedNews} title="Be Good to the World" /> */}
+            <div className={styles.pagination}>
               <Button
                 onClick={() => setPage(page - 1)}
                 disabled={page === 1}
@@ -81,7 +97,7 @@ export default function NewsPage() {
               >
                 Next
               </Button>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
