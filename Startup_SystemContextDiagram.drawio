@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-05-15T09:14:35.448Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="liy26Aa8ONtRCbdNbIzz" version="24.4.0" type="github" pages="2">
-  <diagram name="Page-1" id="vw5F2ry62NzUPVOA2TTh">
-    <mxGraphModel dx="1112" dy="1187" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="app.diagrams.net" modified="2024-05-15T09:17:10.386Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="t69T-sCfTA45npW3IODx" version="24.4.0" type="github" pages="2">
+  <diagram name="SystemContext" id="vw5F2ry62NzUPVOA2TTh">
+    <mxGraphModel dx="1834" dy="1188" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -21,7 +21,7 @@
         <mxCell id="Sv1wGybwLc0noFc5Dew0-19" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;fontSize=12;startSize=8;endSize=8;" parent="1" source="Sv1wGybwLc0noFc5Dew0-6" target="Sv1wGybwLc0noFc5Dew0-9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Sv1wGybwLc0noFc5Dew0-20" value="Add, edit, delete news" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" parent="Sv1wGybwLc0noFc5Dew0-19" vertex="1" connectable="0">
+        <mxCell id="Sv1wGybwLc0noFc5Dew0-20" value="Add, edit, delete post" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" parent="Sv1wGybwLc0noFc5Dew0-19" vertex="1" connectable="0">
           <mxGeometry x="-0.0523" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -73,7 +73,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="qTSnqKUIdIdzA5zsN6SZ" name="Page-2">
+  <diagram id="qTSnqKUIdIdzA5zsN6SZ" name="UseCase">
     <mxGraphModel dx="1834" dy="1188" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -121,9 +121,9 @@
           <mxGeometry x="370" y="137" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="H8vCPZCUGZUoWpRkA2zb-16" value="Authentication" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="14" width="120" height="80" as="geometry" />
+          <mxGeometry x="36" y="34" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="H8vCPZCUGZUoWpRkA2zb-17" value="Includes" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;fontSize=12;curved=1;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="H8vCPZCUGZUoWpRkA2zb-5" target="H8vCPZCUGZUoWpRkA2zb-16">
+        <mxCell id="H8vCPZCUGZUoWpRkA2zb-17" value="Includes" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;fontSize=12;curved=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="H8vCPZCUGZUoWpRkA2zb-5" target="H8vCPZCUGZUoWpRkA2zb-16">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="90" y="85" as="sourcePoint" />
             <mxPoint x="250" y="85" as="targetPoint" />
