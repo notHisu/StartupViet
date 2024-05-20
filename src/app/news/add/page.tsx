@@ -5,7 +5,6 @@ import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
 import Button from "@/components/Button/Button";
 import { addNews } from "@/app/api";
-
 interface NewsData {
   title: string;
   content: string;

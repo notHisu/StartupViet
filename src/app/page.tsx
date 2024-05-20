@@ -10,7 +10,7 @@ import { options } from "./api/auth/[...nextauth]/options";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 
-interface NewsItem {
+export interface NewsItem {
   // Define the properties of a news item here
   _id: string;
   title: string;
