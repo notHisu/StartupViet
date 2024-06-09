@@ -2,6 +2,7 @@ import styles from "./List.module.css";
 import ItemColumn from "./ItemColumn/ItemColumn";
 import Button from "@/components/Button/Button";
 import { symlink } from "fs";
+import Link from "next/link";
 
 export default function List({
   newsData,
@@ -15,7 +16,9 @@ export default function List({
     <div className={styles.list}>
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
-        <Button className={styles.btn}>View all</Button>
+        <Link href="/news/view-all">
+          <Button className={styles.btn}>View all</Button>
+        </Link>
       </div>
       <div className={`row ${styles.listNews}`}>
         {ListNews ? (
