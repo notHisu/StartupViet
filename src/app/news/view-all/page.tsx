@@ -29,7 +29,7 @@ export default function ViewAllPage() {
   const sortedData = filteredData?.sort((a: NewsItem, b: NewsItem) => {
     switch (sortOption) {
       case "date":
-        return new Date(b.date) - new Date(a.date); // Assuming the items have a 'date' property
+        return new Date(b.date).getDate() - new Date(a.date).getDate(); // Assuming the items have a 'date' property
       case "alphabet":
         return a.title.localeCompare(b.title); // Assuming the items have a 'title' property
       default:

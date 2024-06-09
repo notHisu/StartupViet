@@ -24,7 +24,7 @@ export default function NavBar() {
 
         <div>
           <Links />
-        </div>        
+        </div>
 
         <div>
           {!session ? (

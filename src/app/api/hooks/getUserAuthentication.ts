@@ -1,4 +1,7 @@
-export async function useUserAuthentication(username: string, password: string) {
+export async function getUserAuthentication(
+  username: string,
+  password: string
+) {
   try {
     const res = await fetch("http://localhost:3000/api/user/authenticate", {
       method: "POST",
@@ -6,7 +9,7 @@ export async function useUserAuthentication(username: string, password: string) 
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: username,
+        username: username,
         password: password,
       }),
       cache: "no-store",

@@ -1,7 +1,8 @@
 import type { NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { useUserAuthentication } from "../../hooks/useUserAuthentication";
+import { getUserAuthentication } from "../../hooks/getUserAuthentication";
+import { UserData } from "@/config/user";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -24,7 +25,7 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        const users = [
+        /*         const users = [
           { id: "1", name: "test", password: "test" },
           { id: "2", name: "Hieu", password: "hieu" },
           { id: "3", name: "Khoi", password: "khoi" },
@@ -34,14 +35,29 @@ export const options: NextAuthOptions = {
             credentials?.username === user.name &&
             credentials.password === user.password
           ) {
+            console.log("User found:", user);
             return user;
           }
+        } */
+        if (
+          credentials?.username != undefined &&
+          credentials?.password != undefined
+        ) {
+          try {
+            const user = await getUserAuthentication(
+              credentials.username,
+              credentials.password
+            );
+            const userData: UserData = {
+              id: user.id,
+              name: user.username,
+              password: user.password,
+            };
+            return userData;
+          } catch (error) {
+            console.error("Authentication failed:", error);
+          }
         }
-
-        // if(credentials?.username != undefined && credentials?.password != undefined)
-        //   {
-        //     useUserAuthentication(credentials?.username,credentials?.password);
-        //   }
         return null;
       },
     }),
