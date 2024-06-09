@@ -65,8 +65,8 @@ export default function NewsPage() {
             )}
 
             <ListMostRead newsData={news} />
-            <List newsData={paginatedNews} title="Be Good to the World" />
-            {/* <div className={styles.pagination}>
+            <List newsData={paginatedNews} title="Join us" />
+            <div className={styles.pagination}>
               <Button
                 onClick={() => setPage(page - 1)}
                 disabled={page === 1}
@@ -76,12 +76,13 @@ export default function NewsPage() {
               </Button>
               <Button
                 onClick={() => setPage(page + 1)}
+                // @ts-ignore
                 disabled={paginatedNews ? paginatedNews.length < limit : true}
                 className={styles.btn}
               >
                 Next
               </Button>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
