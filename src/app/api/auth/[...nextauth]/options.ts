@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { useUserAuthentication } from "../../hooks/useUserAuthentication";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -37,6 +38,10 @@ export const options: NextAuthOptions = {
           }
         }
 
+        // if(credentials?.username != undefined && credentials?.password != undefined)
+        //   {
+        //     useUserAuthentication(credentials?.username,credentials?.password);
+        //   }
         return null;
       },
     }),
