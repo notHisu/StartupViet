@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import styles from "./NavBar.module.css";
+
 import Links from "./Links/Links";
 import Image from "next/image";
 import Button from "../Button/Button";
-import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function NavBar() {
@@ -21,9 +21,11 @@ export default function NavBar() {
             className={styles.imgContainer}
           />
         </Link>
+
         <div>
           <Links />
-        </div>
+        </div>        
+
         <div>
           {!session ? (
             <Button onClick={signIn} className="styles.button">
@@ -31,7 +33,9 @@ export default function NavBar() {
             </Button>
           ) : (
             <div className={styles.user}>
-              <p>{session.user?.name}</p>
+              <Link href="/profile" key="Profile">
+                <p>{session.user?.name}</p>
+              </Link>
               <Button onClick={signOut} className="styles.button">
                 Logout
               </Button>
