@@ -6,6 +6,8 @@ import styles from "./viewAll.module.css";
 import { getNewsData } from "@/app/api";
 import ItemColumn from "@/components/List/ItemColumn/ItemColumn";
 import { NewsItem } from "@/config/news";
+import Input from "@/components/Input/Input";
+import Button from "@/components/Button/Button";
 
 export default function ViewAllPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,19 +41,28 @@ export default function ViewAllPage() {
 
   return (
     <div className={styles.container}>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <select
-        value={sortOption}
-        onChange={(e) => setSortOption(e.target.value)}
-      >
-        <option value="date">Sort by date</option>
-        <option value="alphabet">Sort alphabetically</option>
-      </select>
+      <div className={styles.search_bar}>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <Button className={styles.btn} disabled={false}>
+          Search
+        </Button>
+      </div>
+      <div className={styles.sort_bar}>
+        <select
+          className={styles.select}
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+        >
+          <option value="date">Sort by date</option>
+          <option value="alphabet">Sort alphabetically</option>
+        </select>
+      </div>
+
       <div className={`row ${styles.listNews}`}>
         {sortedData ? (
           sortedData.map((item: any) => (
