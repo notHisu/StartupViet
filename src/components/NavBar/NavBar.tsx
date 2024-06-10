@@ -6,9 +6,37 @@ import Links from "./Links/Links";
 import Image from "next/image";
 import Button from "../Button/Button";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
+import Dropdown from "../Dropdown/Dropdown";
 
 export default function NavBar() {
   const { data: session } = useSession();
+  const links = [
+    {
+      href: "/profile",
+      text: (
+        <>
+          <FaUser /> Profile
+        </>
+      ),
+    },
+    {
+      href: "/settings",
+      text: (
+        <>
+          <FaCog /> Settings
+        </>
+      ),
+    },
+    /*     {
+      href: "/logout",
+      text: (
+        <>
+          <FaSignOutAlt /> Logout
+        </>
+      ),
+    }, */
+  ];
   return (
     <>
       <div className={styles.container}>
@@ -33,9 +61,7 @@ export default function NavBar() {
             </Button>
           ) : (
             <div className={styles.user}>
-              <Link href="/profile" key="Profile">
-                <p>{session.user?.name}</p>
-              </Link>
+              <Dropdown links={links} text={`${session.user?.name}`} />
               <Button onClick={signOut} className="styles.button">
                 Logout
               </Button>
