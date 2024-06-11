@@ -1,15 +1,17 @@
-import type { NextAuthOptions } from "next-auth";
+import type { NextAuthOptions, User } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { getUserAuthentication } from "../../hooks/getUserAuthentication";
-import { UserData } from "@/config/user";
+import { UserData } from "@/types/user";
 
 export const options: NextAuthOptions = {
+  
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID as string,
       clientSecret: process.env.GITHUB_SECRET as string,
     }),
+    
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -24,6 +26,7 @@ export const options: NextAuthOptions = {
           placeholder: "your-password",
         },
       },
+      
       async authorize(credentials) {
         /*         const users = [
           { id: "1", name: "test", password: "test" },
@@ -48,12 +51,14 @@ export const options: NextAuthOptions = {
               credentials.username,
               credentials.password
             );
-            const userData: UserData = {
-              id: user.id,
-              name: user.username,
-              password: user.password,
-            };
-            return userData;
+
+            // const userData: UserData = {
+            //   id: user._id,
+            //   name: user.username, 
+            // };
+            
+
+            return user;
           } catch (error) {
             console.error("Authentication failed:", error);
           }
@@ -62,4 +67,25 @@ export const options: NextAuthOptions = {
       },
     }),
   ],
+
+  callbacks: {
+    async jwt({token, user}) {
+        if (user) {
+            token.user = user;
+        }
+        return token;
+    },
+
+    async session({session, token}) {
+      //console.log("token: ",token) 
+      if(token)
+        {
+          session.user.name = (token.user as UserData).username;
+          session.user.isAdmin = (token.user as UserData).isadmin;
+          session.user._id = (token.user as UserData)._id;
+        }
+      //console.log("session: ",session) 
+      return session;
+    }
+},
 };

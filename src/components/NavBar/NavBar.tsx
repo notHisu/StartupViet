@@ -10,7 +10,8 @@ import { FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 import Dropdown from "../Dropdown/Dropdown";
 
 export default function NavBar() {
-  const { data: session } = useSession();
+  const { data: session , status} = useSession();
+
   const links = [
     {
       href: "/profile",
@@ -37,6 +38,8 @@ export default function NavBar() {
       ),
     }, */
   ];
+  
+  console.log(session);
   return (
     <>
       <div className={styles.container}>
@@ -55,17 +58,17 @@ export default function NavBar() {
         </div>
 
         <div>
-          {!session ? (
+          {status === "authenticated" ? (
+            <div className={styles.user}>
+            <Dropdown links={links} text={`${session.user?._id}`} />
+            <Button onClick={signOut} className="styles.button">
+              Logout
+            </Button>
+          </div>
+          ) : (
             <Button onClick={signIn} className="styles.button">
               Login
             </Button>
-          ) : (
-            <div className={styles.user}>
-              <Dropdown links={links} text={`${session.user?.name}`} />
-              <Button onClick={signOut} className="styles.button">
-                Logout
-              </Button>
-            </div>
           )}
         </div>
       </div>
