@@ -96,17 +96,19 @@ export default function EditPage({ params }: EditPageProps) {
             onChange={handleChange}
           />
         </label>
-        <label>
-          Featured:
-          <input
-            type="checkbox"
-            name="featured"
-            checked={newsData.featured}
-            onChange={(e) =>
-              setNewsData({ ...newsData, featured: e.target.checked })
-            }
-          />
-        </label>
+        {session.user.isAdmin && (
+          <label>
+            Featured:
+            <input
+              type="checkbox"
+              name="featured"
+              checked={newsData.featured}
+              onChange={(e) =>
+                setNewsData({ ...newsData, featured: e.target.checked })
+              }
+            />
+          </label>
+        )}
         <label>
           Content:
           <textarea

@@ -18,7 +18,8 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
   const data = await getNewsData();
 
   const session = await getServerSession(options);
-  const canEdited = session && session?.user?.name === news.username;
+  const canEdited =
+    session && (session.user.isAdmin || session?.user?.name === news.username);
 
   return (
     <div>
