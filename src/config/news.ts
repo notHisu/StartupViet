@@ -5,11 +5,12 @@ export interface NewsItem {
   _id: string;
   title: string;
   note: string;
+  username: string;
+  userid: string;
   image: string;
   content: string;
   featured: boolean;
   date: string;
-  user: string;
 }
 
 export const newsData = getNewsData();

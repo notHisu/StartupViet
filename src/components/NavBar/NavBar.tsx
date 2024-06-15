@@ -30,10 +30,10 @@ export default function NavBar() {
       ),
     },
     {
-      href: "/managepost",
+      href: "/manageproject",
       text: (
         <>
-          <FaCog /> Manage Post
+          <FaCog /> Manage Project
         </>
       ),
     },
