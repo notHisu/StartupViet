@@ -1,9 +1,8 @@
-import styles from "./profile.module.css";
-import { getServerSession } from "next-auth";
-import { options } from "@/app/api/auth/[...nextauth]/options";
+"use client";
+import { useSession } from "next-auth/react";
 
-export default async function ProfilePage() {
-  const session = await getServerSession(options);
+export default function ProfilePage() {
+  const { data: session } = useSession();
 
   return (
     <>
