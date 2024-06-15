@@ -10,23 +10,9 @@ export default async function ProfilePage() {
       {session ? (
         <div>
           <h1>Profile</h1>
-          <p>Test 
-            content 1
-            <br />
-            content 1
-            <br />
-            content 1
-            <br />
-            content 1
-            <br />
-            content 1
-            <br />
-            content 1
-            <br />
-            content 1
-            <br />
-            content 1
-          </p>
+          <p>{session.user?.name}</p>
+          <p>Số dư tài khoản: 0</p>
+          <button type="button">Nạp tiền ví điện tử</button>
         </div>
       ) : (
         <div>You are not login</div>
