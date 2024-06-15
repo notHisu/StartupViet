@@ -29,6 +29,14 @@ export default function NavBar() {
         </>
       ),
     },
+    {
+      href: "/managepost",
+      text: (
+        <>
+          <FaCog /> Manage Post
+        </>
+      ),
+    },
     /*     {
       href: "/logout",
       text: (
@@ -39,7 +47,7 @@ export default function NavBar() {
     }, */
   ];
   
-  console.log(session);
+  //console.log(session);
   return (
     <>
       <div className={styles.container}>
@@ -60,7 +68,8 @@ export default function NavBar() {
         <div>
           {status === "authenticated" ? (
             <div className={styles.user}>
-            <Dropdown links={links} text={`${session.user?._id}`} />
+            <Dropdown links={links} text={`${session.user?.name}`} />
+
             <Button onClick={signOut} className="styles.button">
               Logout
             </Button>
