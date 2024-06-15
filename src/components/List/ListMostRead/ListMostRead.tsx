@@ -2,15 +2,18 @@ import Image from "next/image";
 import ItemRow from "../ItemRow/ItemRow";
 import styles from "./ListMostRead.module.css";
 import ItemMostRead from "./ItemMostRead/ItemMostRead";
+import { NewsItem } from "@/config/news";
 
-export default function ListMostRead({ newsData }: { newsData: any }) {
+export default function ListMostRead({ newsData }: { newsData: NewsItem[] }) {
   const ListNews = newsData;
 
   const featuredNews = ListNews
-    ? ListNews.filter((item: any) => item.featured === true)
+    ? ListNews.filter((item: NewsItem) => item.featured === true)
     : [];
 
-  const itemMostRead = featuredNews[0];
+  const randomNumber = (min: number, max: number) =>
+    Math.floor(Math.random() * (max - min + 1) + min);
+  const itemMostRead = featuredNews[randomNumber(0, featuredNews.length - 1)];
   /*   const ListNews = [
     {
       img: "/NewItem.png",
@@ -55,7 +58,7 @@ export default function ListMostRead({ newsData }: { newsData: any }) {
         {itemMostRead && <ItemMostRead item={itemMostRead} />}
       </div>
       <div className={`col l-3 m-4 c-12 ${styles.listNewsRow}`}>
-        {featuredNews.map((item: any) => (
+        {featuredNews.map((item: NewsItem) => (
           <ItemRow item={item} key={item._id} />
         ))}
       </div>

@@ -1,26 +1,21 @@
 import Link from "next/link";
 import styles from "./ItemColumn.module.css";
 import Image from "next/image";
+import { NewsItem } from "@/config/news";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function List({
-  item,
-}: {
-  item: {
-    _id: string;
-    title: string;
-    note: string;
-    username: string;
-    img: string;
-    content: string;
-    date: string;
-  };
-}) {
+export default function List({ item }: { item: NewsItem }) {
   return (
     <Link href={`/news/${item._id}`}>
       <div className={`${styles.newItemRow}`}>
-        {/* <Image src={item.img} alt="logo" width={372} height={288} /> */}
-        <img className={styles.img} src="https://fakeimg.pl/1000x700" />
+        <Image
+          src={item.image}
+          alt="logo"
+          width={372}
+          height={288}
+          unoptimized
+        />
+        {/* <img className={styles.img} src={`/${item.img}`} /> */}
         <div className={`${styles.container}`}>
           {/* <p className={styles.type}>{item.note}</p> */}
           <div className={styles.context}>

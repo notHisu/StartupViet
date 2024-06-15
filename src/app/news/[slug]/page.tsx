@@ -25,7 +25,7 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
       <div className={styles.container}>
         <Image
           className={`l-12 ${styles.new_img}`}
-          src="https://fakeimg.pl/1000x700"
+          src={`/${news.image}`}
           width={1000}
           height={700}
           alt="Description of image"

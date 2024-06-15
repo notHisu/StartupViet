@@ -12,6 +12,7 @@ interface NewsData {
   username: string;
   image: string;
   featured: boolean;
+  userid: string;
 }
 
 export default function AddPage() {
@@ -19,6 +20,7 @@ export default function AddPage() {
   if (!session) {
     redirect("/api/auth/signin?callbackUrl=/news");
   }
+
   const [newsData, setNewsData] = useState<NewsData>({
     title: "",
     content: "",
@@ -26,17 +28,36 @@ export default function AddPage() {
     username: "",
     image: "",
     featured: false,
+    userid: session?.user._id || "",
   });
+
+  const [imageName, setImageName] = useState("");
   const router = useRouter();
 
   const handleBack = () => {
     router.back();
   };
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setImageName(event.target.files[0].name);
+    } else {
+      setImageName("");
+    }
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement & HTMLTextAreaElement>
   ) => {
-    setNewsData({ ...newsData, [e.target.name]: e.target.value });
+    if (e.target.name === "image") {
+      if (e.target.files && e.target.files.length > 0) {
+        setNewsData({ ...newsData, image: e.target.files[0].name });
+      } else {
+        setNewsData({ ...newsData, image: "none" });
+      }
+    } else {
+      setNewsData({ ...newsData, [e.target.name]: e.target.value });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -90,9 +111,9 @@ export default function AddPage() {
         <label>
           Image:
           <input
-            type="text"
+            type="file"
             name="image"
-            value={newsData.image}
+            accept="image/*"
             onChange={handleChange}
           />
         </label>

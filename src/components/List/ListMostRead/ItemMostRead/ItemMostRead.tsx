@@ -1,26 +1,15 @@
 import Link from "next/link";
 import styles from "./ItemMostRead.module.css";
+import { NewsItem } from "@/config/news";
 
-export default function ItemMostRead({
-  item,
-}: {
-  item: {
-    _id: string;
-    title: string;
-    note: string;
-    username: string;
-    img: string;
-    content: string;
-    date: string;
-  };
-}) {
+export default function ItemMostRead({ item }: { item: NewsItem }) {
   return (
     <Link href={`/news/${item._id}`}>
       <div
         className={`${styles.bg_img}`}
         style={{
-          // background: `url(${item.img})`,
-          background: "url(https://fakeimg.pl/1000x700)",
+          background: `url(${item.image})`,
+          // background: `url(${item.image})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",

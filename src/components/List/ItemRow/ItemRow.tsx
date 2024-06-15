@@ -1,20 +1,9 @@
 import Link from "next/link";
 import styles from "./ItemRow.module.css";
 import Image from "next/image";
+import { NewsItem } from "@/config/news";
 
-export default function List({
-  item,
-}: {
-  item: {
-    _id: string;
-    title: string;
-    note: string;
-    username: string;
-    img: string;
-    content: string;
-    date: string;
-  };
-}) {
+export default function List({ item }: { item: NewsItem }) {
   return (
     <Link href={`/news/${item._id}`}>
       <div className={`${styles.newItemRow}`}>
@@ -28,8 +17,8 @@ export default function List({
         <div
           className={`l-4 ${styles.img}`}
           style={{
-            // background: `url(${item.img})`,
-            background: "url(https://fakeimg.pl/1000x700)",
+            background: `url(${item.image})`,
+            //background: `url()`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
