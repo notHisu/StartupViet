@@ -50,6 +50,19 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
               </p>
             </div>
             <h2 className={styles.type}>{news.note}</h2>
+
+            {canEdited && (
+              <Link href={`/news/${params.slug}/edit`}>
+                <Button className={styles.editButton}>Edit</Button>
+              </Link>
+            )}
+          </div>
+
+          <div className={`col c-12 m-6 l-12 ${styles.post_info}`}>
+            {/* fix day nhe */}
+            <p>Cam kết ủng hộ dự án: 0 VND</p>
+            <p>Còn: 0 ngày nữa</p>
+            <button type="button">Ủng hộ</button>
           </div>
 
           {/* <div className={`col c-12 m-6 l-6 ${styles.contact}`}>
@@ -62,11 +75,6 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
           </div> */}
         </div>
         {/* <img className={styles.new_img} src={news.image} /> */}
-        {canEdited && (
-          <Link href={`/news/${params.slug}/edit`}>
-            <Button className={styles.editButton}>Edit</Button>
-          </Link>
-        )}
 
         <p
           className={styles.content}
