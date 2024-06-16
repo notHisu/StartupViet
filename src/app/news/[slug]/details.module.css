@@ -119,6 +119,21 @@
   flex-direction: column;
   gap: 1.25rem;
 }
+
+.box_popup_info {
+  padding: 20px 10px;
+}
+.popup_info {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  text-align: start;
+}
+.popup_info + .popup_info {
+  margin-top: 10px;
+}
+
 @media (max-width: 1023px) {
 }
 @media (min-width: 1024px) and (max-width: 1239px) {

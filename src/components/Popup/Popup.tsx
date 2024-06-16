@@ -5,16 +5,20 @@ import { useState } from "react";
 interface Popup {
   show: boolean;
   onClose: any;
+  onConfirm: any;
   children: React.ReactNode;
 }
-const Popup = ({ show, children, onClose }: Popup) => {
+const Popup = ({ show, children, onClose, onConfirm }: Popup) => {
   return show ? (
     <>
       <div className={styles.overlay}>
         <div className={styles.popup}>
           {children}
           <button onClick={onClose} className={styles.closeButton}>
-            Close
+            Hủy
+          </button>
+          <button onClick={onConfirm} className={styles.confirmButton}>
+            Xác nhận
           </button>
         </div>
       </div>
