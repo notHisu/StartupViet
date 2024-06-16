@@ -15,7 +15,9 @@ export default function ProfilePage() {
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
-
+  function updateDonate(donate: string) {
+    setDonate(donate);
+  }
   return (
     <>
       {session ? (
@@ -39,7 +41,7 @@ export default function ProfilePage() {
           <Popup
             donate={donate}
             show={showPopup}
-            setDonate={setDonate}
+            updateDonate={updateDonate}
             onClose={togglePopup}
           />
         </div>
