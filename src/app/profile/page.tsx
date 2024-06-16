@@ -17,14 +17,9 @@ export default function ProfilePage() {
     setShowPopup(!showPopup);
   };
 
-  // useEffect(() => {
-  //   console.log("test go");
-  //   if (session?.user._id) {
-  //     getUserBalanceById(session.user._id)
-  //       .then((data) => setDonate(data))
-  //       .catch((error) => console.error(error));
-  //   }
-  // }, [session?.user._id]);
+  function updateDonate(donate: string) {
+    setDonate(donate);
+  }
 
   return (
     <>
@@ -49,7 +44,7 @@ export default function ProfilePage() {
           <Popup
             donate={donate}
             show={showPopup}
-            setDonate={setDonate}
+            updateDonate={updateDonate}
             onClose={togglePopup}
           />
         </div>
