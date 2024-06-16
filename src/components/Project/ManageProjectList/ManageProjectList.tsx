@@ -23,14 +23,18 @@ const ManageProjectList: React.FC<Props> = ({ newsData }) => {
             margin: "10px 0",
           }}
         >
-          <h2>{item.title}</h2>
-          <p>{item.note}</p>
+          <h2> {item.title}</h2>
+          <p>
+            <strong>Catagory:</strong>
+            {item.note}
+          </p>
           <p>
             <strong>Username:</strong> {item.username}
           </p>
-          <p>
+          {/* <p>
             <strong>UserID:</strong> {item.userid}
-          </p>
+          </p> */}
+
           {/* <div
             style={{
               width: '100px',
@@ -45,13 +49,16 @@ const ManageProjectList: React.FC<Props> = ({ newsData }) => {
               objectFit="cover"
             />
           </div> */}
-          <p>{item.content}</p>
           <p>
             <strong>Featured:</strong> {item.featured ? "Yes" : "No"}
           </p>
           <p>
             <strong>Date:</strong> {new Date(item.date).toLocaleDateString()}
           </p>
+
+          <br />
+          <p>{item.content}</p>
+          <br />
 
           <Link href={`/news/${item._id}/edit`}>
             <Button className={""}>Edit</Button>

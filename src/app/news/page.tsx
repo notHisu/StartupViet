@@ -58,12 +58,13 @@ export default function NewsPage() {
         <div className="row">
           <div className="col l-2 m-2 c-12"></div>
           <div>
-            {session && (
+            {/* {session && (
               <Link href="/news/add">
                 <Button className={styles.addNewsButton}>Create News</Button>
               </Link>
-            )}
+            )} */}
 
+            <br />
             <ListMostRead newsData={news} />
             <List newsData={paginatedNews} title="Join us" />
             <div className={styles.pagination}>

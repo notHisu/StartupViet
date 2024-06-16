@@ -6,6 +6,8 @@ import { getAllNewsByUserId } from "../api";
 import { NewsItem } from "@/config/news";
 
 import ManageProjectList from "@/components/Project/ManageProjectList/ManageProjectList";
+import Link from "next/link";
+import Button from "@/components/Button/Button";
 
 export default async function ManageProjectPage() {
   const session = await getServerSession(options);
@@ -34,7 +36,14 @@ export default async function ManageProjectPage() {
         <div>
           <h1>Manage Startup Projects</h1>
           {/* <p>{session.user?.name}</p> */}
+          <br />
+          <Link href="/news/add">
+            <Button className={styles.addNewsButton}>Create News</Button>
+          </Link>
 
+          <br />
+          <br />
+          <h2>Projects list</h2>
           <div>
             <ManageProjectList newsData={newsData} />
           </div>
