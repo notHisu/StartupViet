@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import Button from "@/components/Button/Button";
 import List from "@/components/List/List";
 import styles from "./details.module.css";
@@ -8,7 +10,8 @@ import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
 import Input from "@/components/Input/Input";
 import Popup from "@/components/Popup/Popup";
-import { useEffect, useState } from "react";
+import { NewsItem } from "@/config/news";
+import { UserData } from "@/types/user";
 
 interface DetailsPageProps {
   params: {
@@ -16,13 +19,31 @@ interface DetailsPageProps {
   };
 }
 
-export default async function DetailsPage({ params }: DetailsPageProps) {
-  const news = await getNewsDataBySlug(params.slug);
-  const data = await getNewsData();
+interface Session {
+  user: UserData;
+}
 
-  const session = await getServerSession(options);
+export default function DetailsPage({ params }: DetailsPageProps) {
+  const [news, setNews] = useState<NewsItem | null>(null);
+  const [data, setData] = useState<NewsItem | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
+
+  useEffect(() => {
+    getNewsDataBySlug(params.slug)
+      .then((data) => setNews(data))
+      .catch((error) => console.error(error));
+
+    getNewsData()
+      .then((data) => setData(data))
+      .catch((error) => console.error(error));
+
+    getServerSession(options)
+      .then((data) => setSession(data))
+      .catch((error) => console.error(error));
+  }, [params.slug]);
+
   const canEdited =
-    session && (session.user.isAdmin || session?.user?.name === news.username);
+    session && (session.user.isAdmin || session?.user?.name === news?.username);
 
   const [donate, setDonate] = useState("0");
 
@@ -47,30 +68,32 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
       <div className={styles.container}>
         <Image
           className={`l-12 ${styles.new_img}`}
-          src={`/${news.image}`}
+          src={`/${news?.image}`}
           width={1000}
           height={700}
           alt="Description of image"
         />
 
-        <h1 className={styles.title}>{news.title}</h1>
+        <h1 className={styles.title}>{news?.title}</h1>
         {/* <div className={styles.note}>{news.note}</div> */}
         <div className={`row ${styles.info}`}>
           <div className={`col c-12 m-6 l-12 ${styles.post_info}`}>
             <div>
               <p className={styles.info_title}>By:</p>
-              <p className={styles.name}>{news.username}</p>
+              <p className={styles.name}>{news?.username}</p>
             </div>
             <div className={styles.date}>
               {/* <i className="fa-solid fa-calendar-days"></i> */}
               <p>
-                {new Date(news.date)
-                  .toLocaleDateString("en-GB")
-                  .split("/")
-                  .join("-")}
+                {news?.date
+                  ? new Date(news.date)
+                      .toLocaleDateString("en-GB")
+                      .split("/")
+                      .join("-")
+                  : "N/A"}
               </p>
             </div>
-            <h2 className={styles.type}>{news.note}</h2>
+            <h2 className={styles.type}>{news?.note}</h2>
 
             {canEdited && (
               <Link href={`/news/${params.slug}/edit`}>
@@ -124,7 +147,7 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
         <p
           className={styles.content}
           dangerouslySetInnerHTML={{
-            __html: news.content.replace(/\n/g, "<br />"),
+            __html: news?.content ? news.content.replace(/\n/g, "<br />") : "",
           }}
         ></p>
       </div>
