@@ -6,6 +6,9 @@ import Link from "next/link";
 import { getNewsData, getNewsDataBySlug } from "@/app/api";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
+import Input from "@/components/Input/Input";
+import Popup from "@/components/Popup/Popup";
+import { useEffect, useState } from "react";
 
 interface DetailsPageProps {
   params: {
@@ -20,6 +23,24 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
   const session = await getServerSession(options);
   const canEdited =
     session && (session.user.isAdmin || session?.user?.name === news.username);
+
+  const [donate, setDonate] = useState("0");
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const [inpDonate, setInpDonate] = useState("0");
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
+  function updateDonate(donate: string) {
+    setDonate(donate);
+  }
+  function HandleClose() {
+    updateDonate(inpDonate);
+    togglePopup();
+  }
 
   return (
     <div>
@@ -60,20 +81,44 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
 
           <div className={`col c-12 m-6 l-12 ${styles.post_info}`}>
             {/* fix day nhe */}
-            <p>Cam kết ủng hộ dự án: 0 VND</p>
+            <p>Cam kết ủng hộ dự án: {donate}VND</p>
             <p>Còn: 0 ngày nữa</p>
-            <button type="button">Ủng hộ</button>
+            <Button onClick={togglePopup}>Ủng hộ</Button>
           </div>
-
-          {/* <div className={`col c-12 m-6 l-6 ${styles.contact}`}>
-            <p className={styles.info_title}>Contact:</p>
-            <div className={styles.contact_img}>
-              <img src={mail_img} />
-                 <img src={zalo_img} />
-                 <img src={fb_img} />
-            </div>
-          </div> */}
         </div>
+
+        <Popup show={showPopup} onClose={HandleClose}>
+          <h2>AddWalletFund</h2>
+          <div className={styles.box_info}>
+            <div className={styles.info}>
+              <p>Tên người ủng hộ: </p>
+              <Input placeholder="abc" className={styles.inp} type="text" />
+            </div>
+            <div className={styles.info}>
+              <p>Ẩn danh: </p>
+              <Input
+                placeholder="1234556"
+                className={styles.inp}
+                type="radio"
+              />
+            </div>
+            <div className={styles.info}>
+              <p>Nội dung tin nhắn ủng hộ: </p>
+              <Input placeholder="000" className={styles.inp} type="text" />
+            </div>
+            <div className={styles.info}>
+              <p>Số tiền ủng hộ: </p>
+              <Input
+                placeholder={`${donate}`}
+                value={inpDonate}
+                setValue={setInpDonate}
+                className={styles.inp}
+                type="text"
+              />
+            </div>
+          </div>
+        </Popup>
+
         {/* <img className={styles.new_img} src={news.image} /> */}
 
         <p
