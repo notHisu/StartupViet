@@ -34,7 +34,7 @@ const Popup = ({ show, onClose, donate, setDonate }: Popup) => {
             <Input placeholder="000" className={styles.inp} type="text" />
           </div>
           <div className={styles.info}>
-            <p>Số tiền muốn thêm: </p>
+            <p>Số tiền muốn thêm(VND): </p>
             <Input
               placeholder={`${donate}`}
               value={donate}

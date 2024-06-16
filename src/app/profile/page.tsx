@@ -8,7 +8,7 @@ import Button from "@/components/Button/Button";
 export default function ProfilePage() {
   const { data: session } = useSession();
 
-  const [donate, setDonate] = useState("100$");
+  const [donate, setDonate] = useState("0");
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -24,7 +24,7 @@ export default function ProfilePage() {
           <div className={styles.bx_info}>
             <div className={styles.info}>
               <p className={styles.name}>{session.user?.name}</p>
-              <p>Số dư tài khoản: 0</p>
+              <p>Số dư tài khoản: {donate} VND</p>
             </div>
             <div>
               <Button
