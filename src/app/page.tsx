@@ -53,11 +53,11 @@ export default function HomePage() {
         <div className="row">
           <div className="col l-2 m-2 c-12"></div>
           <div>
-            {session && (
+            {/* {session && (
               <Link href="/news/add">
                 <Button className={styles.addNewsButton}>Create News</Button>
               </Link>
-            )}
+            )} */}
 
             <ListMostRead newsData={news} />
             <List newsData={paginatedNews} title="Be Good to the World" />

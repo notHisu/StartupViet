@@ -10,7 +10,7 @@ export default function List({ item }: { item: NewsItem }) {
       <div className={`${styles.newItemRow}`}>
         <Image
           src={item.image}
-          alt="logo"
+          alt={item.title}
           width={372}
           height={288}
           unoptimized
