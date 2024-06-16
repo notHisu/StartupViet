@@ -1,7 +1,7 @@
 import styles from "./manageproject.module.css";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
-import { getNewsData } from "../api";
+import { getAllNewsByUserId } from "../api";
 
 import { NewsItem } from "@/config/news";
 
@@ -10,8 +10,18 @@ import ManageProjectList from "@/components/Project/ManageProjectList/ManageProj
 export default async function ManageProjectPage() {
   const session = await getServerSession(options);
   const NewsData = async (): Promise<NewsItem[]> => {
-    const data = await getNewsData();
-    return data;
+    if (!session || !session.user || !session.user._id) {
+      console.warn("Session is null or invalid");
+      return []; // Return an empty array if session is null or invalid
+    }
+
+    try {
+      const data = await getAllNewsByUserId(session.user._id);
+      return data;
+    } catch (error) {
+      console.error("Error fetching news data:", error);
+      throw error;
+    }
   };
   // Fetch and log the news data
   const newsData = await NewsData();

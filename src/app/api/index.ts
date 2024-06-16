@@ -16,6 +16,24 @@ export async function getNewsData() {
   }
 }
 
+export async function getAllNewsByUserId(slug: string) {
+  try {
+    const res = await fetch(`http://localhost:3000/api/news/user/${slug}`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error("Something went wrong!");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error(error);
+    // You can replace this with your own error handling code
+    throw error;
+  }
+}
+
 export async function getPaginatedNewsData(page: number, limit: number) {
   try {
     const res = await fetch(
