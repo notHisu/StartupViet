@@ -1,9 +1,10 @@
 "use client";
 import styles from "./profile.module.css";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Popup from "@/components/Popup/Popup";
 import Button from "@/components/Button/Button";
+import { getUserBalanceById } from "../api";
 
 export default function ProfilePage() {
   const { data: session } = useSession();
@@ -15,6 +16,15 @@ export default function ProfilePage() {
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
+
+  // useEffect(() => {
+  //   console.log("test go");
+  //   if (session?.user._id) {
+  //     getUserBalanceById(session.user._id)
+  //       .then((data) => setDonate(data))
+  //       .catch((error) => console.error(error));
+  //   }
+  // }, [session?.user._id]);
 
   return (
     <>
