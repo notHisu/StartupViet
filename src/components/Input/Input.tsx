@@ -8,7 +8,7 @@ export default function Input({
   setValue,
 }: {
   placeholder: string;
-  className: string;
+  className?: string;
   type: string;
   value?: string;
   setValue?: any;
@@ -19,7 +19,7 @@ export default function Input({
       className={`${styles.container} ${className}`}
       placeholder={placeholder}
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={setValue ? (e) => setValue(Number(e.target.value)) : undefined}
     />
   );
 }

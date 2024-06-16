@@ -45,22 +45,25 @@ export default function DetailsPage({ params }: DetailsPageProps) {
   const canEdited =
     session && (session.user.isAdmin || session?.user?.name === news?.username);
 
-  const [donate, setDonate] = useState("0");
+  const [donate, setDonate] = useState(0);
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const [inpDonate, setInpDonate] = useState("0");
+  const [inpDonate, setInpDonate] = useState(0);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
 
-  function updateDonate(donate: string) {
-    setDonate(donate);
+  function updateDonate(newDonate: number) {
+    setDonate((pre) => {
+      return pre + newDonate;
+    });
   }
-  function HandleClose() {
+  function HandleConfirm() {
     updateDonate(inpDonate);
     togglePopup();
+    setInpDonate(0);
   }
 
   return (
@@ -110,30 +113,28 @@ export default function DetailsPage({ params }: DetailsPageProps) {
           </div>
         </div>
 
-        <Popup show={showPopup} onClose={HandleClose}>
-          <h2>AddWalletFund</h2>
-          <div className={styles.box_info}>
-            <div className={styles.info}>
+        <Popup show={showPopup} onConfirm={HandleConfirm} onClose={togglePopup}>
+          <h2>Ủng hộ</h2>
+          <div className={styles.box_popup_info}>
+            <div className={styles.popup_info}>
               <p>Tên người ủng hộ: </p>
               <Input placeholder="abc" className={styles.inp} type="text" />
             </div>
-            <div className={styles.info}>
-              <p>Ẩn danh: </p>
-              <Input
-                placeholder="1234556"
-                className={styles.inp}
-                type="radio"
-              />
+            <div className={styles.popup_info}>
+              <p className="l-6">Ẩn danh: </p>
+              <div className="l-6">
+                <Input placeholder="" type="checkbox" />
+              </div>
             </div>
-            <div className={styles.info}>
+            <div className={styles.popup_info}>
               <p>Nội dung tin nhắn ủng hộ: </p>
-              <Input placeholder="000" className={styles.inp} type="text" />
+              <Input placeholder="abc" className={styles.inp} type="text" />
             </div>
-            <div className={styles.info}>
+            <div className={styles.popup_info}>
               <p>Số tiền ủng hộ: </p>
               <Input
-                placeholder={`${donate}`}
-                value={inpDonate}
+                placeholder={``}
+                value={`${inpDonate}`}
                 setValue={setInpDonate}
                 className={styles.inp}
                 type="text"

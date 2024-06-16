@@ -10,22 +10,25 @@ import { getUserBalanceById } from "../api";
 export default function ProfilePage() {
   const { data: session } = useSession();
 
-  const [donate, setDonate] = useState("0");
+  const [donate, setDonate] = useState(0);
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const [inpDonate, setInpDonate] = useState("0");
+  const [inpDonate, setInpDonate] = useState(0);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
 
-  function updateDonate(donate: string) {
-    setDonate(donate);
+  function updateDonate(newDonate: number) {
+    setDonate((pre) => {
+      return pre + newDonate;
+    });
   }
-  function HandleClose() {
+  function HandleConfirm() {
     updateDonate(inpDonate);
     togglePopup();
+    setInpDonate(0);
   }
   return (
     <>
@@ -43,7 +46,11 @@ export default function ProfilePage() {
               </Button>
             </div>
           </div>
-          <Popup show={showPopup} onClose={HandleClose}>
+          <Popup
+            show={showPopup}
+            onConfirm={HandleConfirm}
+            onClose={togglePopup}
+          >
             <h2>AddWalletFund</h2>
             <div className={styles.box_info}>
               <div className={styles.info}>
@@ -70,8 +77,8 @@ export default function ProfilePage() {
               <div className={styles.info}>
                 <p>Số tiền muốn thêm(VND): </p>
                 <Input
-                  placeholder={`${donate}`}
-                  value={inpDonate}
+                  placeholder={``}
+                  value={`${inpDonate}`}
                   setValue={setInpDonate}
                   className={styles.inp}
                   type="text"

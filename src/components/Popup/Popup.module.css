@@ -33,3 +33,13 @@
 .closeButton:hover {
   background: #ff7878;
 }
+.confirmButton {
+  background: #232323;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
