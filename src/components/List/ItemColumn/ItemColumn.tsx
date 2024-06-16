@@ -5,11 +5,12 @@ import { NewsItem } from "@/config/news";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function List({ item }: { item: NewsItem }) {
+  const imagePath = "/" + item?.image;
   return (
     <Link href={`/news/${item._id}`}>
       <div className={`${styles.newItemRow}`}>
         <Image
-          src={item.image}
+          src={imagePath}
           alt={item.title}
           width={372}
           height={288}
