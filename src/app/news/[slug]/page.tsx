@@ -12,6 +12,7 @@ import Input from "@/components/Input/Input";
 import Popup from "@/components/Popup/Popup";
 import { NewsItem } from "@/config/news";
 import { UserData } from "@/types/user";
+import { useSession } from "next-auth/react";
 
 interface DetailsPageProps {
   params: {
@@ -26,7 +27,7 @@ interface Session {
 export default function DetailsPage({ params }: DetailsPageProps) {
   const [news, setNews] = useState<NewsItem | null>(null);
   const [data, setData] = useState<NewsItem | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
+  const { data: session } = useSession();
 
   useEffect(() => {
     getNewsDataBySlug(params.slug)
@@ -35,10 +36,6 @@ export default function DetailsPage({ params }: DetailsPageProps) {
 
     getNewsData()
       .then((data) => setData(data))
-      .catch((error) => console.error(error));
-
-    getServerSession(options)
-      .then((data) => setSession(data))
       .catch((error) => console.error(error));
   }, [params.slug]);
 
