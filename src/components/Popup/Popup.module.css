@@ -20,7 +20,6 @@
   max-width: 80%;
   text-align: center;
 }
-
 .closeButton {
   background: #ff5e5e;
   color: white;
@@ -33,16 +32,4 @@
 
 .closeButton:hover {
   background: #ff7878;
-}
-.box_info {
-  padding: 20px 10px;
-}
-.info {
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-  align-items: center;
-}
-.info + .info {
-  margin-top: 10px;
 }
