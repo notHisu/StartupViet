@@ -1,5 +1,7 @@
 import Input from "../Input/Input";
 import styles from "./Popup.module.css";
+import { useState } from "react";
+
 interface Popup {
   show: boolean;
   onClose: any;
@@ -7,7 +9,9 @@ interface Popup {
   setDonate: any;
 }
 const Popup = ({ show, onClose, donate, setDonate }: Popup) => {
+  const [inpDonate, setInpDonate] = useState("0");
   if (!show) {
+    setDonate(inpDonate);
     return null;
   }
 
@@ -37,8 +41,8 @@ const Popup = ({ show, onClose, donate, setDonate }: Popup) => {
             <p>Số tiền muốn thêm(VND): </p>
             <Input
               placeholder={`${donate}`}
-              value={donate}
-              setValue={setDonate}
+              value={inpDonate}
+              setValue={setInpDonate}
               className={styles.inp}
               type="text"
             />
