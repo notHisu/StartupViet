@@ -1,0 +1,15 @@
+.container {
+  height: 100vh;
+}
+.bx_info {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  gap: 30px;
+}
+.info {
+}
+.name {
+  font-size: 40px;
+  font-weight: 700;
+}
